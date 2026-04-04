@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phishing URL Detector</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <span class="logo">🛡️</span>
+      <div>
+        <h1>Phishing Detector</h1>
+        <p class="subtitle">Powered by Machine Learning</p>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="input-section">
+      <input
+        type="text"
+        id="urlInput"
+        placeholder="Paste a URL to check..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button id="checkBtn">Check</button>
+    </div>
+
+    <!-- Result card (hidden until response) -->
+    <div id="resultCard" class="result-card hidden">
+
+      <!-- Badge -->
+      <div id="badge" class="badge"></div>
+
+      <!-- Confidence bar -->
+      <div class="confidence-section">
+        <div class="confidence-label">
+          <span>Phishing probability</span>
+          <span id="confidenceText"></span>
+        </div>
+        <div class="confidence-bar-bg">
+          <div id="confidenceBar" class="confidence-bar"></div>
+        </div>
+      </div>
+
+      <!-- Reasons -->
+      <div class="reasons-section">
+        <p class="reasons-title">Why this classification?</p>
+        <ul id="reasonsList"></ul>
+      </div>
+
+      <!-- Top features (collapsible) -->
+      <details class="features-section">
+        <summary>Feature contributions (SHAP)</summary>
+        <div id="featuresTable"></div>
+      </details>
+
+    </div>
+
+    <!-- Loading state -->
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <span>Analysing URL…</span>
+    </div>
+
+    <!-- Error state -->
+    <div id="errorBox" class="error-box hidden"></div>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

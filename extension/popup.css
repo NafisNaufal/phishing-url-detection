@@ -1,0 +1,148 @@
+/* ── Reset & base ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  background: #f8f9fa;
+  color: #212529;
+  width: 360px;
+  min-height: 120px;
+}
+
+.container { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+.header {
+  display: flex; align-items: center; gap: 10px;
+}
+.logo { font-size: 28px; }
+h1 { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+.subtitle { font-size: 11px; color: #6c757d; margin-top: 1px; }
+
+/* ── Input ──────────────────────────────────────────────────────────────────── */
+.input-section { display: flex; gap: 8px; }
+
+#urlInput {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1.5px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#urlInput:focus { border-color: #4361ee; }
+
+#checkBtn {
+  padding: 8px 16px;
+  background: #4361ee;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+#checkBtn:hover  { background: #3451d1; }
+#checkBtn:active { background: #2a41bc; }
+
+/* ── Result card ────────────────────────────────────────────────────────────── */
+.result-card {
+  background: #fff;
+  border: 1.5px solid #dee2e6;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Badge */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  align-self: flex-start;
+}
+.badge.phishing  { background: #ffeaea; color: #c0392b; border: 1.5px solid #e74c3c; }
+.badge.legitimate{ background: #eafaf1; color: #1e8449; border: 1.5px solid #27ae60; }
+
+/* Confidence bar */
+.confidence-section { display: flex; flex-direction: column; gap: 4px; }
+.confidence-label {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: #495057;
+}
+.confidence-bar-bg {
+  height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden;
+}
+.confidence-bar {
+  height: 100%; border-radius: 4px;
+  transition: width 0.5s ease;
+}
+.confidence-bar.phishing  { background: #e74c3c; }
+.confidence-bar.legitimate{ background: #27ae60; }
+
+/* Reasons */
+.reasons-title { font-size: 12px; font-weight: 600; color: #495057; margin-bottom: 4px; }
+#reasonsList { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+#reasonsList li {
+  font-size: 12.5px; color: #343a40;
+  padding: 5px 8px;
+  background: #f8f9fa;
+  border-left: 3px solid #4361ee;
+  border-radius: 0 6px 6px 0;
+  line-height: 1.4;
+}
+
+/* Features collapsible */
+.features-section summary {
+  font-size: 12px; color: #6c757d; cursor: pointer;
+  padding: 2px 0;
+}
+.features-section summary:hover { color: #4361ee; }
+
+#featuresTable {
+  margin-top: 8px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.feat-row {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11.5px;
+}
+.feat-name  { width: 160px; color: #495057; font-family: monospace; }
+.feat-bar-wrap { flex: 1; height: 6px; background: #e9ecef; border-radius: 3px; overflow: hidden; }
+.feat-bar   { height: 100%; border-radius: 3px; }
+.feat-bar.pos { background: #e74c3c; }
+.feat-bar.neg { background: #27ae60; }
+.feat-val   { width: 48px; text-align: right; color: #6c757d; }
+
+/* ── Loading ────────────────────────────────────────────────────────────────── */
+.loading {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; padding: 16px; color: #6c757d; font-size: 13px;
+}
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid #dee2e6;
+  border-top-color: #4361ee;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Error ──────────────────────────────────────────────────────────────────── */
+.error-box {
+  padding: 10px 14px;
+  background: #ffeaea; color: #c0392b;
+  border: 1.5px solid #e74c3c; border-radius: 8px;
+  font-size: 13px; line-height: 1.4;
+}
+
+/* ── Utility ────────────────────────────────────────────────────────────────── */
+.hidden { display: none !important; }
