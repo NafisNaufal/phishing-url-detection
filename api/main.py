@@ -67,7 +67,7 @@ class PredictRequest(BaseModel):
         if not v:
             raise ValueError('URL must not be empty')
         if not (v.startswith('http://') or v.startswith('https://')):
-            v = 'http://' + v   # prepend scheme if missing
+            v = 'https://' + v   # prepend scheme if missing
         return v
 
 
